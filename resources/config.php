@@ -1,14 +1,19 @@
 <?php  
   
-/* 
-     Created by Mayank Bhola
-     copyright (c) 2013 . All rights reserved
-
-
-     config file to store DB connection settings.
-     !! to be included in every php file
-*/  
+/**
+ * Copyright information
+ * @author Mayank Bhola <mayankbhola@gmail.com>
+ * @copyright Copyright (c) 2013, Mayank Bhola
+ * @version 0.9 
+ */
   
+
+/**
+* This variable stores global db connection settings
+* @name $config
+*/
+
+
 $config = array(  
     "db" => array(  
         "db1" => array(  
@@ -36,15 +41,11 @@ $config = array(
     )  
 );  
   
-/* 
-    I will usually place the following in a bootstrap file or some type of environment 
-    setup file (code that is run at the start of every page request), but they work  
-    just as well in your config file if it's in php (some alternatives to php are xml or ini files). 
-*/  
+
   
 /* 
     Creating constants for heavily used paths makes things a lot easier. 
-    ex. require_once(LIBRARY_PATH . "Paginator.php") 
+   ex. require_once(LIBRARY_PATH . "Paginator.php") 
 */  
 defined("LIBRARY_PATH")  
     or define("LIBRARY_PATH", realpath(dirname(__FILE__) . '/library'));  
