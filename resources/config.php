@@ -17,7 +17,7 @@
 $config = array(  
     "db" => array(  
         "db1" => array(  
-            "dbname" => "database1",  
+            "dbname" => "dbase",  
             "username" => "root",  
             "password" => "root",  
             "host" => "localhost:8888"  // change in final implementation for windows
