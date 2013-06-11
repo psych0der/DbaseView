@@ -24,7 +24,7 @@
 	
 
 	<heading>
-	<h1> dBaseViewer</h1>
+	<h1> dBaseViewer<sup><span id="beta">BETA</span></sup></h1>
 	</heading>
 
 	
@@ -37,11 +37,18 @@
     <span class="buttons">	
 	<button class="bg-color-blue white-text">Clients</button>
 	&nbsp;
-	<button class="bg-color-blue white-text">Comapnies</button>
+	<button class="bg-color-blue white-text">Companies</button>
 	</span>
 
+
+	
 	</section>
 
+	<footer>
+
+	created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
+
+	</footer>
 
 
 </body>

@@ -36,3 +36,26 @@
 	margin-top:0px;
 	margin-left: 150px;
 }
+
+#beta {
+    font-size : 0.6em;
+    color :#2ed9f4;
+
+}
+
+footer {
+
+    background-size:100% 130px;
+    
+    width:100%; 
+    overflow:hidden;
+    padding: 10px;
+    margin-top : 574px;
+    font-family: tahoma;
+    font-size : 0.8em;
+    color : #555555;
+    text-align: center;
+    border-top : dotted thin #cccccc;
+      
+
+}
