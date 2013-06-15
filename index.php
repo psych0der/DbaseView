@@ -17,11 +17,11 @@
 </head>
 <body>
 	
- 	<section class="metrouicss" id="main">
+ 	<section class="metrouicss">
 	
 	
 	
-	
+	<div id="main">
 
 	<heading>
 	<h1> dBaseViewer<sup><span id="beta">BETA</span></sup></h1>
@@ -29,19 +29,19 @@
 
 	
 
-	<div class="input-control text">
+	<div class="input-control text search" width="500px">
         <input type="text" />
         <button class="btn-search"></button>
     </div>
     <br>
     <span class="buttons">	
-	<button class="bg-color-blue white-text">Clients</button>
+	<a href="clientadd.php"><button class="bg-color-blue white-text">Clients</button></a>
 	&nbsp;
-	<button class="bg-color-blue white-text">Companies</button>
+	<a href="companyadd.php"><button class="bg-color-blue white-text">Companies</button></a>
 	</span>
 
 
-	
+	</div>
 	</section>
 
 	<footer>
