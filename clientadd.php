@@ -25,46 +25,24 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-     /*  $('#dob').DatePicker({
-    format:'m/d/Y',
-    date: '2008-07-31',
-    current: '2008-07-31',
-    calendars: 1,
-    starts: 1,
-    position: 'r',
-    onBeforeShow: function(){
-        $('#dob').DatePickerSetDate($('#dob').val(), true);
-    },
-    onChange: function(formated, dates){
-        $('#dob').val(formated);
-        if ($('#closeOnSelect input').attr('checked')) {
-            $('#dob').DatePickerHide();
+     
+        $('#dob').DatePicker({
+        format:'m/d/Y',
+        date: "06/07/1992",
+        current: "06/7/1992",
+        starts: 1,
+        position: 'right',
+        onBeforeShow: function(){
+            $('#dob').DatePickerSetDate($('#dob').val(), true);
+        },
+        onChange: function(formated, dates){
+            $('#dob').val(formated);
+            if ($('#closeOnSelect input').attr('checked')) {
+                $('#dob').DatePickerHide();
+            }
         }
-    }
-});
-*/
-$('#dob').DatePicker({
-    format:'m/d/Y',
-    date: "06/07/1992",
-    current: "06/7/1992",
-    starts: 1,
-    position: 'right',
-    onBeforeShow: function(){
-        $('#dob').DatePickerSetDate($('#dob').val(), true);
-    },
-    onChange: function(formated, dates){
-        $('#dob').val(formated);
-        if ($('#closeOnSelect input').attr('checked')) {
-            $('#dob').DatePickerHide();
-        }
-    }
-});
-
-    
-});
-
-
-
+    });
+    });
     </script>
 
 </head>
@@ -111,15 +89,15 @@ $('#dob').DatePicker({
         </select>
 
         <input type="text" id="fname" name="fname" placeholder="John" class="custom-input name" required/>
-        <input type="text" id = "mname" name="mname" placeholder="Michell" class="custom-input name" required/>
-        <input type="text" id = "lname" name="lname" placeholder="doe" class="custom-input name" required/>
+        <input type="text" id = "mname" name="mname" placeholder="Michell" class="custom-input name"/>
+        <input type="text" id = "lname" name="lname" placeholder="doe" class="custom-input name"/>
     </li>
 	
 	<li>
         <label for="name">Address:</label>
         <input type="text" id="house" name="house" placeholder="house/flat number" class="custom-input name" required/>
-        <input type="text" id="colony" name="colony" placeholder="colony" class="custom-input name" required/>
-        <input type="text" id="city" name="city" placeholder="city" class="custom-input name" required/>
+        <input type="text" id="colony" name="colony" placeholder="colony" class="custom-input name"/>
+        <input type="text" id="city" name="city" placeholder="city" class="custom-input name"/>
     </br>
     </br>
 
@@ -133,15 +111,15 @@ $('#dob').DatePicker({
         <label for="name">Father's Name:</label>
        
         <input type="text" id="ffname" name="ffname" placeholder="John" class="custom-input name" required/>
-        <input type="text" id="fmname" name="fmname" placeholder="Michell" class="custom-input name" required/>
-        <input type="text" id="flname" name="flname" placeholder="doe" class="custom-input name" required/>
+        <input type="text" id="fmname" name="fmname" placeholder="Michell" class="custom-input name"/>
+        <input type="text" id="flname" name="flname" placeholder="doe" class="custom-input name"/>
     </li>
 
     <li>
         <label for="name">Mother's Name:</label>
         <input type="text" id="mfname" name="mfname" placeholder="Mary" class="custom-input name" required/>
-        <input type="text" id="mmname" name="mmname" placeholder="Michell" class="custom-input name" required/>
-        <input type="text" id="mlname" name="mlname" placeholder="doe" class="custom-input name" required/>
+        <input type="text" id="mmname" name="mmname" placeholder="Michell" class="custom-input name"/>
+        <input type="text" id="mlname" name="mlname" placeholder="doe" class="custom-input name"/>
     </li>
 
     <li>
@@ -197,7 +175,7 @@ $('#dob').DatePicker({
     </li>
 
     <li>
-        <label for="mobile2">Alternate Mobile #:</label>
+        <label for="mobile2">Alternate Mob. #:</label>
         <input type="text" id="mobile2" name="mobile2" placeholder="09999999999" class="custom-input name" />
         <span class="form_hint">Proper format "+91-9999999999 or 09999999999"</span>
     </li>
@@ -224,51 +202,29 @@ $('#dob').DatePicker({
 
 	
 
-    <li>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="username" class="custom-input name"  required/>
-        
-    </li>
-
-     <li>
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" placeholder="password" class="custom-input name"  required/>
-        
-    </li>
+    
 	
 	<li>
     	<button class="submit bg-color-green fg-color-white" type="submit">Submit Form</button>
     	<button class="submit bg-color-blue fg-color-white" type="reset">Reset Fields</button>
 	</li>
 
-     
-    
-
 	</ul>
 	
-
 </form>
-
 
 </div>
 
-
-
  </section>
        
+</section>
 	
-	
+<footer>
 
-	</section>
-	<footer>
+created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
 
-	created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
-
-	</footer>
-
+</footer>
 
 </body>
-
-
 
 </html>

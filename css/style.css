@@ -1,42 +1,41 @@
 @charset "UTF-8";
 
+
 #main {
 width:500px;
-height:500px;
-position:absolute;
-left:50%;
-top:50%;
-margin:-150px 0 0 -250px
+height:360px;
+margin:200px 0 0 400px;
+
 }
 
 #main > heading {
 text-align:center;
-margin-bottom:80px
+/*margin-bottom:80px;*/
 }
 
 #main > div {
-margin-top:60px
+/*margin-top:60px*/
 }
 
 .bg-color-customBlue {
 background-color:#2ed9f4!important;
-color:#fff
+color:#fff;
 }
 
 .white-text {
-color:#fff!important
+color:#fff!important;
 }
 
 .buttons {
 margin-top:0;
-margin-left:150px
+margin-left:150px;
 }
 
 
 
 #beta {
 font-size:.6em;
-color:#2ed9f4
+color:#2ed9f4;
 }
 
 footer {
@@ -44,10 +43,11 @@ background-size:100% 130px;
 width:100%;
 overflow:hidden;
 padding:10px;
-margin-top:574px;
+margin-top:10px;
 font-family:tahoma;
 font-size:.8em;
 color:#555;
 text-align:center;
-border-top:dotted thin #ccc
+border-top:dotted thin #ccc;
+clear:both;
 }

@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
 
 	};
 
-	function nan(field) {
+function nan(field) {
 		field.required = false;
 		$(field).removeClass('valid invalid');
 
@@ -272,18 +272,48 @@ jQuery(document).ready(function($) {
 		var error = '';
 
 		error += validateText(document.getElementById('fname'));
-		error += validateText(document.getElementById('mname'));
-		error += validateText(document.getElementById('lname'));
+		
+		var mname = document.getElementById('mname');
+		if(mname.value!="")
+			error += validateText(mname);
+
+		var lname = document.getElementById('lname');
+		if(lname.value!="")
+			error += validateText(lname);
+		
 		error += validateText(document.getElementById('ffname'));
-		error += validateText(document.getElementById('fmname'));
-		error += validateText(document.getElementById('flname'));
+
+		var fmname = document.getElementById('fmname');
+		if(fmname.value!="")
+			error += validateText(fmname);
+
+		var flname = document.getElementById('flname');
+		if(flname.value!="")
+			error += validateText(flname);
+		
 		error += validateText(document.getElementById('mfname'));
-		error += validateText(document.getElementById('mmname'));
-		error += validateText(document.getElementById('mlname'));
+		
+		var mmname = document.getElementById('mmname');
+		if(mmname.value!="")
+			error += validateText(mmname);
+		
+		var mlname = document.getElementById('mlname');
+		if(mlname.value!="")
+			error += validateText(mlname);
+		
+
 		error += notEmpty(document.getElementById('house'));
-		error += validateText(document.getElementById('colony'));
+		
+		var colony = document.getElementById('colony');
+		if(colony.value!="")
+			error += validateText(colony);
+		
 		error += validateText(document.getElementById('state'));
-		error += validateText(document.getElementById('city'));
+
+		var city = document.getElementById('city');
+		if(city.value!="")
+			error += validateText(city);
+		
 		error += nan(document.getElementById('pincode'));
 		var company = document.getElementById('company');
 		if (company.value != "")
@@ -298,6 +328,7 @@ jQuery(document).ready(function($) {
 
 
 		error += validateMobile(document.getElementById('mobile1'));
+		
 		var mobile2 = document.getElementById('mobile2');
 		if (mobile2.value != "")
 			error += validateMobile(mobile2);
@@ -305,33 +336,20 @@ jQuery(document).ready(function($) {
 
 
 		error += notEmpty(document.getElementById('phone1'));
+		
 		var phone2 = document.getElementById('phone2');
 		if (phone2.value != "")
 			error += notEmpty(phone2);
 
 
 		error += validateUrl(document.getElementById('url'));
-		error += validateText(document.getElementById('username'));
-		error += validateText(document.getElementById('password'));
+		//error += validateText(document.getElementById('username'));
+		//error += validateText(document.getElementById('password'));
 
 
 		if (error != '') {
 
 
-			/*	var div = document.createElement('div');
-		var ul = document.createElement('ul');
-		error = error.split('\n');
-		for (var i =0;i< error.length -1;i++)
-		{
-			var li = document.createElement('li');
-			var text = document.createTextNode(error[i]);
-			li.appendChild(text);
-			ul.appendChild(li);
-		}
-
-		div.className = 'error';
-		div.className+= ' fg-color-red';
-		*/
 			var span = document.createElement('span');
 			span.className = 'label important';
 			span.id = 'error-span';
@@ -339,13 +357,7 @@ jQuery(document).ready(function($) {
 
 			var text1 = document.createTextNode('Errors : Please correct errors and resubmit form');
 			span.appendChild(text1);
-			/*
-		div.appendChild(span);
-		div.appendChild(document.createElement('br'));
-		div.appendChild(ul);
-		div.id = "error-section";
-
-		*/
+		
 
 			var parent = document.getElementById('content');
 
