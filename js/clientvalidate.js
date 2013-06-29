@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
 
 	};
 
-function nan(field) {
+	function nan(field) {
 		field.required = false;
 		$(field).removeClass('valid invalid');
 
@@ -264,56 +264,55 @@ function nan(field) {
 	});
 
 
-	$('#cadd').submit(function() {
-		event.preventDefault();
-
+	$('#submit').click(function() {
+		//event.preventDefault();
 
 
 		var error = '';
 
 		error += validateText(document.getElementById('fname'));
-		
+
 		var mname = document.getElementById('mname');
-		if(mname.value!="")
+		if (mname.value != "")
 			error += validateText(mname);
 
 		var lname = document.getElementById('lname');
-		if(lname.value!="")
+		if (lname.value != "")
 			error += validateText(lname);
-		
+
 		error += validateText(document.getElementById('ffname'));
 
 		var fmname = document.getElementById('fmname');
-		if(fmname.value!="")
+		if (fmname.value != "")
 			error += validateText(fmname);
 
 		var flname = document.getElementById('flname');
-		if(flname.value!="")
+		if (flname.value != "")
 			error += validateText(flname);
-		
+
 		error += validateText(document.getElementById('mfname'));
-		
+
 		var mmname = document.getElementById('mmname');
-		if(mmname.value!="")
+		if (mmname.value != "")
 			error += validateText(mmname);
-		
+
 		var mlname = document.getElementById('mlname');
-		if(mlname.value!="")
+		if (mlname.value != "")
 			error += validateText(mlname);
-		
+
 
 		error += notEmpty(document.getElementById('house'));
-		
+
 		var colony = document.getElementById('colony');
-		if(colony.value!="")
+		if (colony.value != "")
 			error += validateText(colony);
-		
+
 		error += validateText(document.getElementById('state'));
 
 		var city = document.getElementById('city');
-		if(city.value!="")
+		if (city.value != "")
 			error += validateText(city);
-		
+
 		error += nan(document.getElementById('pincode'));
 		var company = document.getElementById('company');
 		if (company.value != "")
@@ -328,7 +327,7 @@ function nan(field) {
 
 
 		error += validateMobile(document.getElementById('mobile1'));
-		
+
 		var mobile2 = document.getElementById('mobile2');
 		if (mobile2.value != "")
 			error += validateMobile(mobile2);
@@ -336,14 +335,17 @@ function nan(field) {
 
 
 		error += notEmpty(document.getElementById('phone1'));
-		
+
 		var phone2 = document.getElementById('phone2');
 		if (phone2.value != "")
 			error += notEmpty(phone2);
 
-
-		error += validateUrl(document.getElementById('url'));
-		//error += validateText(document.getElementById('username'));
+		var url = document.getElementById('url');
+		if(url.value != "")
+		{
+			error += validateUrl(url);
+		
+		}//error += validateText(document.getElementById('username'));
 		//error += validateText(document.getElementById('password'));
 
 
@@ -357,7 +359,7 @@ function nan(field) {
 
 			var text1 = document.createTextNode('Errors : Please correct errors and resubmit form');
 			span.appendChild(text1);
-		
+
 
 			var parent = document.getElementById('content');
 
@@ -387,8 +389,9 @@ function nan(field) {
 
 			parent.appendChild(span);
 			parent.insertBefore(span, parent.firstChild);
+			
 
-			//return false;
+
 		}
 
 	});

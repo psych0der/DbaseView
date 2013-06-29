@@ -7,6 +7,112 @@
  * @version 0.9 
  */
   
+
+include './resources/config.php';
+include './resources/library/database.php';
+
+$db = new Database($config['db']['db1']['host'],$config['db']['db1']['username'],$config['db']['db1']['password'],$config['db']['db1']['dbname']);
+
+if ( !(empty($_POST)))
+{
+    
+    $title = $_POST['title'];
+    $fname = $_POST['fname'];
+    $ffname = $_POST['ffname'];
+    $mfname = $_POST['mfname'];
+    $house = $_POST['house'];
+    $state = $_POST['state'];
+    $pincode = $_POST['pincode'];
+    $dob = $_POST['dob'];
+    $pan = $_POST['pan'];
+    $din = $_POST['din'];
+    $email = $_POST['email1'];
+    $mobile = $_POST['mobile1'];
+    $phone = $_POST['phone1'];
+
+    
+
+    if(isset($_POST['mname']) && ! empty($_POST['mname']))
+        $mname = $_POST['mname'];
+    else
+        $mname = '';
+
+    if(isset($_POST['lname']) && ! empty($_POST['lname']))
+        $lname = $_POST['lname'];
+    else
+        $lname = '';
+
+    if(isset($_POST['fmname']) && ! empty($_POST['fmname']))
+        $fmname = $_POST['fmname'];
+    else
+        $fmname = '';
+
+    if(isset($_POST['flname']) && ! empty($_POST['flname']))
+        $flname = $_POST['flname'];
+    else
+        $flname = '';
+
+    if(isset($_POST['mmname']) && ! empty($_POST['mmname']))
+        $mmname = $_POST['mmname'];
+    else
+        $mmname = '';
+
+    if(isset($_POST['mlname']) && ! empty($_POST['mlname']))
+        $mlname = $_POST['mlname'];
+    else
+        $mlname = '';
+
+    if(isset($_POST['colony']) && ! empty($_POST['colony']))
+        $colony = $_POST['colony'];
+    else
+        $colony = '';
+
+    if(isset($_POST['city']) && ! empty($_POST['city']))
+        $city = $_POST['city'];
+    else
+        $city = '';
+
+    if(isset($_POST['company1']) && ! empty($_POST['company1']))
+        $company = $_POST['company1'];
+    else
+    {
+        if(isset($_POST['company2']) && ! empty($_POST['company2']))
+            $company = $_POST['company2'];
+        else
+            $company = '';
+        
+    }
+
+    if(isset($_POST['email2']) && ! empty($_POST['email2']))
+        $email2 = $_POST['email2'];
+    else
+        $email2 = '';
+
+    if(isset($_POST['mobile2']) && ! empty($_POST['mobile2']))
+        $mobile2 = $_POST['mobile2'];
+    else
+        $mobile2 = '';
+
+    if(isset($_POST['phone2']) && ! empty($_POST['phone2']))
+        $phone2 = $_POST['phone2'];
+    else
+        $phone2 = '';
+
+    if(isset($_POST['url']) && ! empty($_POST['url']))
+        $url = $_POST['url'];
+    else
+        $url = '';
+
+
+    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url);
+
+    $insertFlag = $db->insert('client',$values);
+
+    if(!$insertFlag)
+        echo $db->error();
+
+
+}
 ?>
 <!--- FORM MARKUP -->
 
@@ -19,7 +125,7 @@
 	<link href="css/style.css" rel="stylesheet">
     <link href="css/formstyle.css" rel="stylesheet">
 
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/datepicker.js"></script>
     <script type="text/javascript" src="js/clientvalidate.js"></script>
 
@@ -27,9 +133,9 @@
     $(document).ready(function() {
      
         $('#dob').DatePicker({
-        format:'m/d/Y',
-        date: "06/07/1992",
-        current: "06/7/1992",
+        format:'Y-m-d',
+        date: "1992-07-03",
+        current: "1992-07-03",
         starts: 1,
         position: 'right',
         onBeforeShow: function(){
@@ -124,14 +230,14 @@
 
     <li>
         <label for="dob">Date of Birth:</label>
-        <input type="text" name="dob" placeholder="birthdate" id="dob" class="custom-input name" value = "06/07/1992"required/>
+        <input type="text" name="dob" placeholder="birthdate" id="dob" class="custom-input name" value = "1992-07-03"required/>
         
     </li>
 
     <li>
         <label for="comapny">Company:</label>
        Exisitng company : 
-       <select name="company" class="select company">
+       <select name="company1" class="select company">
             <!-- filled through php -->
         </select>
     </br>
@@ -139,7 +245,7 @@
     OR
 </br>
 
-        <input type="text" id= "company" name="company" placeholder="company not listed"  class="custom-input name row" width="350px"/>
+        <input type="text" id= "company" name="company2" placeholder="company not listed"  class="custom-input name row" width="350px"/>
         
     </li>
 
@@ -196,7 +302,7 @@
 
 	<li>
     	<label for="website">Website:</label>
-    	<input type="url" id="url" name="website" placeholder="www.example.com" class="custom-input name" required/>
+    	<input type="url" id="url" name="url" placeholder="www.example.com" class="custom-input name"/>
     	<span class="form_hint">Proper format "http://someaddress.com"</span>
 	</li>
 
@@ -205,7 +311,7 @@
     
 	
 	<li>
-    	<button class="submit bg-color-green fg-color-white" type="submit">Submit Form</button>
+    	<button class="submit bg-color-green fg-color-white" type="submit" id="submit">Submit Form</button>
     	<button class="submit bg-color-blue fg-color-white" type="reset">Reset Fields</button>
 	</li>
 
