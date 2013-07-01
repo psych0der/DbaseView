@@ -35,7 +35,7 @@
     </div>
     <br>
     <span class="buttons">	
-	<a href="clientadd.php"><button class="bg-color-blue white-text">Clients</button></a>
+	<a href="clients.php"><button class="bg-color-blue white-text">Clients</button></a>
 	&nbsp;
 	<a href="companyadd.php"><button class="bg-color-blue white-text">Companies</button></a>
 	</span>

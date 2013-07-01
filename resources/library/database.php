@@ -100,6 +100,12 @@ public function tableExists($table)
 public function select($table,$count = false,$rows = "*",$where=null , $order = null ,$limit = null )
 {
 
+/*
+flushing result
+
+*/
+	$this->result = array();
+
 	if (is_array($rows))
 		$rows = implode(',',$rows);
 
@@ -121,34 +127,40 @@ public function select($table,$count = false,$rows = "*",$where=null , $order = 
 
 	if($this->tableExists($table))
 	{
-		//echo $q;
-		$result = $this->conn->query($q);
+		//echo "</br>".$q;
+		$response = $this->conn->query($q);
 		
-		if(!$result)
+		if(!$response)
 			return false;
 
 		if($count==true)
 		{
-			$row = $result->fetch_array(MYSQLI_NUM);
+			$row = $response->fetch_array(MYSQLI_NUM);
 			$this->result = $row[0];
-			echo $row[0];
+			//echo $row[0];
 			return true;
 
 		}
 
 
-		for($i = 0 ; $i< $result->num_rows; $i++)
+		for($i = 0 ; $i< $response->num_rows; $i++)
 		{
-			$row = $result->fetch_array(MYSQLI_ASSOC);
+			$row = $response->fetch_array(MYSQLI_ASSOC);
 			$key = array_keys($row);
+			
+		
 			for($x = 0 ; $x < count($key);$x++ )
 			{
 				if(!is_int($key[$x]))
 				{
-					if($result->num_rows > 1)
+					if($response->num_rows > 1)
 						$this->result[$i][$key[$x]] = $row[$key[$x]];
-					else if($result->num_rows == 1)
+					else if($response->num_rows == 1)
+					{
+						
 						$this->result[$key[$x]] = $row[$key[$x]];
+						echo $this->result[$key[$x]];
+					}
 					else
 						$this->result = NULL;
 
@@ -156,6 +168,7 @@ public function select($table,$count = false,$rows = "*",$where=null , $order = 
 			}
 
 		}
+	
 
 		return true;
 
@@ -296,6 +309,7 @@ public function update($table,$cols, $where)
 
 public function getResult()
 {
+	
 	return $this->result;
 }
 
