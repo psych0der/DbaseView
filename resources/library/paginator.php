@@ -163,6 +163,11 @@ class Paginator {
     	return $this->num_pages;
     }
 
+    function getLimit()
+    {
+    	return $this->limit;
+    }
+
 
 
 

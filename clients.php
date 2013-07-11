@@ -20,7 +20,7 @@ $pages->setItemsTotal($db->getResult());
 $pages->setMidRange(9);  
 $pages->paginate();  
 
-$response = $db->select('client',false,'id,s_first,s_last,city,state,company');
+$response = $db->select('client',false,'id,s_first,s_last,city,state,company',null,null,$pages->getLimit());
 if(!$response)
     echo $db->error();
 else
