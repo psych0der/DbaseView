@@ -26,15 +26,9 @@ if(!$response)
 else
     $result = $db->getResult();
 
-    
-
-
-
-
-
-
 ?>
-<!--- FORM MARKUP -->
+
+<!--- TABLE MARKUP -->
 
 
 <!html>

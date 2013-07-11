@@ -68,21 +68,29 @@ margin-top:15px
     margin-bottom : 5px;
 }
 
-.add ul {
+.add ul , .sadd ul , #custom-ul{
     width:850px;
     list-style-type:none;
     list-style-position:outside;
     margin:0px;
     padding:0px;
 }
-.add li{
+
+#custom-ul {
+  width : 900px;
+}
+.add li , .sadd li{
     padding:12px;
     border-bottom:1px solid #eee;
     position:relative;
 }
 
-.add li:first-child, .add li:last-child {
+.add li:first-child, .add li:last-child ,.sadd li:first-child, .sadd li:last-child {
     border-bottom:1px solid #777;
+}
+
+.sadd li {
+  border : none;
 }
 
 .required_notification {

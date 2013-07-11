@@ -205,3 +205,30 @@ margin-left:auto;
 margin-right: auto;
 
 }
+
+#v-center{
+position:fixed;
+top:40%;
+left : 35%;
+
+}
+
+#v-center > span {
+
+	font-size : 1em;
+}
+
+#info-block {
+	margin-top : 5px;
+	font-size: 1.3em;
+}
+
+#info {
+position: absolute;
+left : 210px;
+}
+
+#custom-div {
+	margin-top : 20px;
+	padding: 10px;
+}

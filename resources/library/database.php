@@ -159,7 +159,7 @@ flushing result
 					{
 						
 						$this->result[$key[$x]] = $row[$key[$x]];
-						echo $this->result[$key[$x]];
+						//echo $this->result[$key[$x]];
 					}
 					else
 						$this->result = NULL;
