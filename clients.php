@@ -112,7 +112,7 @@ for($i = 0 ; $i < count($result) ; $i++)
 echo "<tr>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['s_first']." ".$result[$i]['s_last']."</a></td>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['company']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['city'].",".$result[$i]['city']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['city'].",".$result[$i]['state']."</a></td>";
 echo "</tr>";
 
 

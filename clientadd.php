@@ -7,6 +7,7 @@
  * @version 0.9 
  */
   
+ob_start();
 
 include './resources/config.php';
 include './resources/library/database.php';
@@ -110,6 +111,17 @@ if ( !(empty($_POST)))
 
     if(!$insertFlag)
         echo $db->error();
+
+    $response = $db->select('client',false,'id',"pan='$pan'",null);
+    if($response)
+        $id = $db->getResult();
+    else
+        echo $db->error();
+    print_r($id);
+    header('Location: showclient.php?id='.$id['id']);
+
+    ob_flush();
+
 
 
 }

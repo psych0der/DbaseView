@@ -133,11 +133,11 @@ else
              echo $user['s_title'];
              if($user['s_middle']!="")
              {
-                echo " ".$user['s_first'].$user['s_middle'].$user['s_last'];
+                echo " ".$user['s_first']." ".$user['s_middle']." ".$user['s_last'];
 
              }
              else
-                echo " ".$user['s_first'].$user['s_last'];
+                echo " ".$user['s_first']." ".$user['s_last'];
 
             ?>
             </span>
@@ -423,6 +423,8 @@ else
         $credential = $db->getResult();
 
 
+
+
     ?>
     <li>
         <table class="striped">
@@ -437,7 +439,20 @@ else
             </thead>
             <tbody>
             <?php 
+            
+        if(!empty($credential))
+        {
+            if(!isset($credential[0]))
+            {
+                echo "<tr>";
+                    echo "<td>".$credential['account_type']."</td>";
+                    echo "<td>".$credential['username']."</td>";
+                    echo "<td>".$credential['password']."</td>";
+                    echo "</tr>";
+            }
 
+            else
+            {
             for($i = 0 ; $i < count($credential) ; $i++)
                 {
                     echo "<tr>";
@@ -447,6 +462,8 @@ else
                     echo "</tr>";
             
                 }
+            }
+        }  
 
             ?>
 
