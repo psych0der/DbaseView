@@ -229,7 +229,7 @@ public function delete($table, $where= null)
 	else
 		$delete = 'DELETE FROM '.$table.' WHERE '.$where;
 
-	echo $delete;
+	//echo $delete;
 	$result = $this->conn->query($delete);
 
 	if( $result)
@@ -315,7 +315,7 @@ public function getResult()
 
 public function error()
 {
-	return 'SQL Error : '.$this->conn->error.' end error ';
+	return $this->conn->error;
 }
 
 }

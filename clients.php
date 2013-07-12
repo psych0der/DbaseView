@@ -107,6 +107,19 @@ else
     </tr> -->
 <?php 
 
+if(!empty($result))
+{
+if(!isset($result[0]))
+{
+echo "<tr>";
+echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['s_first']." ".$result['s_last']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['company']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['city'].",".$result['state']."</a></td>";
+echo "</tr>";
+
+}
+else
+{
 for($i = 0 ; $i < count($result) ; $i++)
 {
 echo "<tr>";
@@ -117,9 +130,9 @@ echo "</tr>";
 
 
 }
+}
 
-
-
+}
 ?>
     
 </tbody>

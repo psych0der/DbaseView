@@ -477,7 +477,8 @@ else
     </li>
 
     <li id="add_button">
-        <center><button class="submit bg-color-green fg-color-white"  id="create1">Add credential</button></center>
+        <center><button class="submit bg-color-green fg-color-white"  id="create1">Add credential</button>
+        <a href=<?php echo "\"clientedit.php?id=$id\""?>><button style="margin-left:-1px;" class="submit bg-color-blue fg-color-white"  id="create2">EDIT</button></a></center>
         
     </li>
 
