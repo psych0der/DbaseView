@@ -163,6 +163,23 @@ if ( !(empty($_POST)))
     var edited = 1;
     var id = <?php echo $id;?>;
 
+    function deleteCredential(user,pass)
+    {
+        var r = confirm('Are you sure you want to delete the credential');
+        if(r==true)
+        {
+            
+             $.ajax({ 
+                 url : "delete-credential.php?user="+user+"&pass="+pass,
+                async : false,
+                });
+            $('#'+user+pass).remove();
+        }
+        
+    
+    };
+
+
     $(document).ready(function() {
 
         
@@ -211,6 +228,7 @@ if ( !(empty($_POST)))
 
     });
 
+    
     
 });
     </script>
@@ -590,7 +608,63 @@ else
     	
     	<span class="form_hint">Proper format "http://someaddress.com"</span>
 	</li>
+    <?php
+        $response = $db->select('user_account',false,'*',"id=$id",null);
+        if($response)
+            $credential = $db->getResult();
+    ?>
 
+    <li>
+        <table class="striped" id="cred-table">
+            <caption>Login Credentials</caption>
+            <thead>
+                <tr>
+                     <th scope="col"></th>
+                     <th scope="col">Service</th>
+                     <th scope="col">username</th>
+                     <th scope="col">password</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+            
+        if(!empty($credential))
+        {
+            if(!isset($credential[0]))
+            {
+                echo "<tr id=\"".$credential['username'].$credential['password']."\">";
+                    echo "<td><i class=\"icon-cancel\" onclick =\"deleteCredential('".$credential['username']."','".$credential['password']."');\"></i></td>";
+                    echo "<td>".$credential['account_type']."</td>";
+                    echo "<td>".$credential['username']."</td>";
+                    echo "<td>".$credential['password']."</td>";
+                    echo "</tr>";
+            }
+
+            else
+            {
+            for($i = 0 ; $i < count($credential) ; $i++)
+                {
+                    echo "<tr id=\"".$credential['username'].$credential['password']."\">";
+                    echo "<td><i class=\"icon-cancel\" onclick =\"deleteCredential('".$credential['username']."','".$credential['password']."');\"></i></td>";
+                    echo "<td>".$credential[$i]['account_type']."</td>";
+                    echo "<td>".$credential[$i]['username']."</td>";
+                    echo "<td>".$credential[$i]['password']."</td>";
+                    echo "</tr>";
+            
+                }
+            }
+        }  
+
+            ?>
+
+
+
+
+            </tbody>
+            
+
+        </table>
+    </li>
 	
 
     
