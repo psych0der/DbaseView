@@ -266,8 +266,25 @@ jQuery(document).ready(function($) {
 
 	$('#submit').click(function() {
 		//event.preventDefault();
+		//alert(edited);
 
 
+		
+		if(typeof edited ==='undefined')
+		{
+
+			
+			
+		}
+		else {
+			
+			
+			$.ajax({ 
+             url : "delete.php?id="+id,
+             async : false,
+         	});
+
+		}
 		var error = '';
 
 		error += validateText(document.getElementById('fname'));

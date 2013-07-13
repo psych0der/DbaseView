@@ -17,6 +17,7 @@ $db = new Database($config['db']['db1']['host'],$config['db']['db1']['username']
 if ( !(empty($_POST)))
 {
     
+
     $title = $_POST['title'];
     $fname = $_POST['fname'];
     $ffname = $_POST['ffname'];
@@ -110,15 +111,17 @@ if ( !(empty($_POST)))
     $insertFlag = $db->insert('client',$values);
 
     if(!$insertFlag)
-        echo $db->error();
+      $error =  $db->error();
 
     $response = $db->select('client',false,'id',"pan='$pan'",null);
     if($response)
         $id = $db->getResult();
     else
         echo $db->error();
-    print_r($id);
-    header('Location: showclient.php?id='.$id['id']);
+    
+
+    if($insertFlag)
+        header('Location: showclient.php?id='.$id['id']);
 
     ob_flush();
 
@@ -188,6 +191,15 @@ if ( !(empty($_POST)))
  
 
  <section id="content">
+<?php
+    if(isset($insertFlag) and $insertFlag ==false)
+    {
+    echo $db->error();
+    echo "<h4><center><span class=\"label important\">Database Error : </span>"." ".$error."</center></h4>";
+     
+
+    }
+    ?>
 
 <div class="form">
 <form class="add" id="cadd" action="" method="post" novalidate>

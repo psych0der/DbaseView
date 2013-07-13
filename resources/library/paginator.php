@@ -44,6 +44,7 @@ class Paginator {
 
 			$this->num_pages = ceil($this->items_total/$this->default_ipp);
 			$this->items_per_page = $this->default_ipp;
+			
 		
 		}
 
@@ -53,6 +54,8 @@ class Paginator {
 				$this->items_per_page = $this->default_ipp;
 
 			$this->num_pages = ceil($this->items_total/$this->items_per_page);
+			if($this->num_pages == 0)
+				$this->num_pages = 1;
 
 		}
 
@@ -104,6 +107,7 @@ class Paginator {
             }  
             $this->return .= "<a class=\"paginate\" href=\"$_SERVER[PHP_SELF]?page=1&ipp=All\">All</a> \n";  
         }  
+
         $this->low = ($this->current_page-1) * $this->items_per_page;  
         $this->high = ($this->items_per_page == 'All') ? $this->items_total:($this->current_page * $this->items_per_page)-1;  
         $this->limit = ($this->items_per_page == 'All') ? "":" LIMIT $this->low,$this->items_per_page";  
