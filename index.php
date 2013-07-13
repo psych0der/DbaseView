@@ -28,11 +28,12 @@
 	</heading>
 
 	
-
+	<form id="search" action="search.php" method="post">
 	<div class="input-control text search" width="500px">
-        <input type="text" />
+        <input type="text" name="query"/>
         <button class="btn-search"></button>
     </div>
+	</form>
     <br>
     <span class="buttons">	
 	<a href="clients.php"><button class="bg-color-blue white-text">Clients</button></a>

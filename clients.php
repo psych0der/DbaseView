@@ -80,11 +80,12 @@ else
     <h1>Client-List</h1>
     <a href="clientadd.php"><div id="add-client"> <b class="icon-plus"></b><p id="add-text"><i>Add Client</i></p></div></a>
 
-
+<form id="search" action="search.php" method="post">
 <div class="input-control text search" id="search">
-        <input type="text" />
+        <input type="text" name="query"/>
         <button class="btn-search"></button>
     </div>
+</form>
 
 </header>
 

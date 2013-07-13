@@ -267,14 +267,10 @@ jQuery(document).ready(function($) {
 	$('#submit').click(function() {
 		//event.preventDefault();
 		//alert(edited);
-
-
 		
 		if(typeof edited ==='undefined')
 		{
-
-			
-			
+		// no action					
 		}
 		else {
 			
