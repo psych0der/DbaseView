@@ -139,10 +139,12 @@ if ( !(empty($_POST)))
 	<link href="css/modern.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
     <link href="css/formstyle.css" rel="stylesheet">
+    <link href="css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 
     <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/datepicker.js"></script>
     <script type="text/javascript" src="js/clientvalidate.js"></script>
+    <script type="text/javascript" src="js/jqueryui.js"></script>
 
     <script type="text/javascript">
     $(document).ready(function() {
@@ -163,6 +165,11 @@ if ( !(empty($_POST)))
             }
         }
     });
+
+    $('#state').autocomplete({
+  source: ['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu & Kashmir','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Tripura','Uttarakhand','Uttar Pradesh','West Bengal','Andaman & Nicobar','Chandigarh','Dadra and Nagar Haveli','Daman & Diu','Delhi','Lakshadweep','Puducherry'],
+});
+    
     });
     </script>
 
@@ -232,9 +239,11 @@ if ( !(empty($_POST)))
     </br>
 
     	<div class="row">
+        <div class="ui-widget">
     	<input type="text" id="state" name="state" placeholder="state" class="custom-input name " required/>
         <input type="text" id= "pincode" name="pincode" placeholder="pincode" class="custom-input name " required/>
 		</div>
+        </div>
     </li>
 
     <li>
