@@ -4,7 +4,7 @@
  * Copyright information
  * @author Mayank Bhola <mayankbhola@gmail.com>
  * @copyright Copyright (c) 2013, Mayank Bhola
- * @version 0.9 
+ * @version 1.0 
  */
   
 ?>
