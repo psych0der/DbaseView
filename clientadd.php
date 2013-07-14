@@ -278,7 +278,7 @@ if ( !(empty($_POST)))
     OR
 </br>
 
-        <input type="text" id= "company" name="company2" placeholder="company not listed"  class="custom-input name row" width="350px"/>
+        <input type="text" id= "company" name="company2" placeholder="company not listed"  class="custom-input name row" width="350px" />
         
     </li>
 

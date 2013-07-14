@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 		field.required = false;
 		$(field).removeClass('valid invalid');
 
-		if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(field.value)) {
+		if (/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(field.value)) {
 			$(field).addClass('valid');
 			return "";
 
