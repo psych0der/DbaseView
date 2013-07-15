@@ -15,6 +15,7 @@ include './resources/library/database.php';
 $db = new Database($config['db']['db1']['host'],$config['db']['db1']['username'],$config['db']['db1']['password'],$config['db']['db1']['dbname']);
 $flag = false;
 
+
 if(isset($_GET['id']) and !empty($_GET['id']))
 {
     $flag = true;
@@ -26,8 +27,14 @@ if(isset($_GET['id']) and !empty($_GET['id']))
     {
         $db->error();
         $flag = false;
+       
     }
+
+    if(empty($user))
+        $flag = false;
+
 }
+
 
 if ( !(empty($_POST)))
 {
@@ -122,7 +129,7 @@ if ( !(empty($_POST)))
 
 
     $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url);
-
+    $insertFlag = false;
     $insertFlag = $db->insert('client',$values);
 
     if(!$insertFlag)
