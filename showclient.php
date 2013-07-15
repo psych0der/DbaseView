@@ -27,6 +27,9 @@ if(isset($_GET['id']) and !empty($_GET['id']))
         $db->error();
         $flag = false;
     }
+
+    if(empty($user))
+        $flag = false;
 }
 
 ?>
