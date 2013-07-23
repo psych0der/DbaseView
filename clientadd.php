@@ -355,14 +355,16 @@ if ( !(empty($_POST)))
 </div>
 
  </section>
-       
-</section>
-	
-<footer>
+
+ <footer style="position:relative;">
 
 created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
 
 </footer>
+       
+</section>
+	
+
 
 </body>
 

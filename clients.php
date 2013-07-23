@@ -151,14 +151,15 @@ echo $pages->display_pages();
 ?>
 
 </div>
-       
+
 </section>
-	
 <footer>
 
 created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
 
 </footer>
+       	
+
 
 </body>
 
