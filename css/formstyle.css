@@ -33,13 +33,14 @@ padding:10px;
 padding-left:35px;
 padding-top:20px;
 margin-bottom:2px; 
-min-height: 554px;
+
+
 }
 
 #content header > span {
 color:#0867a8;
 font-size:3em;
-font-weight:100
+font-weight:100;
 margin-bottom :10px;
 }
 
@@ -48,7 +49,7 @@ font-size:1.4em
 }
 
 .form {
-margin-top:15px
+margin-top:15px;
 }
 
 :-moz-placeholder {
