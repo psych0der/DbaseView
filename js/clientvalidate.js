@@ -49,8 +49,11 @@ jQuery(document).ready(function($) {
 
 	}
 
-	function validatePan() {
-		field = $('#pan');
+	function validatePan(id) {
+		if(typeof(id)==='undefined')
+			field = $('#pan');
+		else
+			field = $('#'+id);
 		field.removeAttr('required');
 		field.removeClass('valid invalid');
 
@@ -263,6 +266,8 @@ jQuery(document).ready(function($) {
 		validateText(this);
 	});
 
+	
+
 
 	$('#submit').click(function() {
 		//event.preventDefault();
@@ -416,6 +421,8 @@ jQuery(document).ready(function($) {
 		}
 
 	});
+
+
 
 
 
