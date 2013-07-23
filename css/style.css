@@ -39,9 +39,9 @@ color:#2ed9f4;
 
 footer {
 
-height: 5%; 
+height: 30px; 
 position: absolute; 
-bottom: 1; 
+bottom: 0; 
 width: 100%;
 overflow:hidden;
 padding:10px;

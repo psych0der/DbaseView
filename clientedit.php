@@ -703,7 +703,7 @@ else
      
 </section>
 	
-<footer>
+<footer style="position:relative;height:10px;">
 
 created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
 

@@ -43,13 +43,14 @@
 
 
 	</div>
-	</section>
-
-	<footer>
+	<footer style="position:absolute;">
 
 	created by Mayank Bhola . copyright (C) Mayank Bhola 2013 . All rights reserved.
 
 	</footer>
+	</section>
+
+	
 
 
 </body>
