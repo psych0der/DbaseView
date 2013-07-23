@@ -293,7 +293,10 @@ jQuery(document).ready(function($) {
 		if (lname.value != "")
 			error += validateText(lname);
 
-		error += validateText(document.getElementById('ffname'));
+		
+		var ffname = document.getElementById('ffname');
+		if(ffname.value !="")
+			error += validateText(ffname);
 
 		var fmname = document.getElementById('fmname');
 		if (fmname.value != "")
@@ -303,7 +306,9 @@ jQuery(document).ready(function($) {
 		if (flname.value != "")
 			error += validateText(flname);
 
-		error += validateText(document.getElementById('mfname'));
+		var mfname = document.getElementById('mfname');
+		if(mfname.value !="")
+			error += validateText(mfname);
 
 		var mmname = document.getElementById('mmname');
 		if (mmname.value != "")
@@ -332,7 +337,10 @@ jQuery(document).ready(function($) {
 			validateText(company);
 
 		error += validatePan();
-		error += validateDin();
+		
+		if(document.getElementById('din').value != "")
+			error += validateDin();
+		
 		error += validateEmail(document.getElementById('email1'));
 		var email2 = document.getElementById('email2');
 		if (email2.value != "")

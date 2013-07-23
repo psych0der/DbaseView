@@ -267,7 +267,10 @@ else
         </div>
         
     </li>
-
+    <?php 
+        if($user['din']!= "")
+        {
+    ?>
     <li>
         <div id="info-block">
         <?php 
@@ -281,6 +284,9 @@ else
         </div>
         
     </li>
+    <?php
+    }
+    ?>
 
     
     <li>

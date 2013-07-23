@@ -249,14 +249,14 @@ if ( !(empty($_POST)))
     <li>
         <label for="name">Father's Name:</label>
        
-        <input type="text" id="ffname" name="ffname" placeholder="John" class="custom-input name" required/>
+        <input type="text" id="ffname" name="ffname" placeholder="John" class="custom-input name"/>
         <input type="text" id="fmname" name="fmname" placeholder="Michell" class="custom-input name"/>
         <input type="text" id="flname" name="flname" placeholder="doe" class="custom-input name"/>
     </li>
 
     <li>
         <label for="name">Mother's Name:</label>
-        <input type="text" id="mfname" name="mfname" placeholder="Mary" class="custom-input name" required/>
+        <input type="text" id="mfname" name="mfname" placeholder="Mary" class="custom-input name"/>
         <input type="text" id="mmname" name="mmname" placeholder="Michell" class="custom-input name"/>
         <input type="text" id="mlname" name="mlname" placeholder="doe" class="custom-input name"/>
     </li>
@@ -290,7 +290,7 @@ if ( !(empty($_POST)))
 
     <li>
         <label for="din">DIN:</label>
-        <input type="text" id = "din" name="din" placeholder="din " class="custom-input name"  required/>
+        <input type="text" id = "din" name="din" placeholder="din " class="custom-input name" />
         
     </li>
     
