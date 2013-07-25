@@ -15,12 +15,12 @@ include './resources/library/paginator.php';
 $db = new Database($config['db']['db1']['host'],$config['db']['db1']['username'],$config['db']['db1']['password'],$config['db']['db1']['dbname']);
 
 $pages = new Paginator();  
-$db->select('client',true);
+$db->select('company',true);
 $pages->setItemsTotal($db->getResult());  
 $pages->setMidRange(9);  
 $pages->paginate();  
 
-$response = $db->select('client',false,'id,s_first,s_last,city,state,company',null,null,$pages->getLimit());
+$response = $db->select('company',false,'id,name,cin,nature',null,null,$pages->getLimit());
 if(!$response)
     echo $db->error();
 else
@@ -77,8 +77,8 @@ else
  <section id="content">
 
 <header>
-    <h1>Client-List</h1>
-    <a href="clientadd.php"><div id="add-client"> <b class="icon-plus"></b><p id="add-text"><i>Add Client</i></p></div></a>
+    <h1>Company-List</h1>
+    <a href="companyadd.php"><div id="add-client"> <b class="icon-plus"></b><p id="add-text"><i>Add Company</i></p></div></a>
 
 <form id="search" action="search.php" method="post">
 <div class="input-control text search" id="search">
@@ -95,8 +95,8 @@ else
     <tr>
        
         <th scope="col">Name</th>
-        <th scope="col">Company</th>
-        <th scope="col">Location</th>
+        <th scope="col">CIN</th>
+        <th scope="col">Nature</th>
     </tr>
 </thead>
 <tbody>
@@ -113,9 +113,9 @@ if(!empty($result))
 if(!isset($result[0]))
 {
 echo "<tr>";
-echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['s_first']." ".$result['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['company']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['city'].",".$result['state']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result['id']."\">".$result['name']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result['id']."\">".$result['cin']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result['id']."\">".$result['nature']."</a></td>";
 echo "</tr>";
 
 }
@@ -124,9 +124,9 @@ else
 for($i = 0 ; $i < count($result) ; $i++)
 {
 echo "<tr>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['s_first']." ".$result[$i]['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['company']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['city'].",".$result[$i]['state']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result[$i]['id']."\">".$result[$i]['name']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result[$i]['id']."\">".$result[$i]['cin']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result[$i]['id']."\">".$result[$i]['nature']."</a></td>";
 echo "</tr>";
 
 

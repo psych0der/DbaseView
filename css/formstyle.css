@@ -197,7 +197,7 @@ button.submit:active {
     width : 100px;
 }
 
- select{
+ .select{
   
    background: transparent;
    width: 60px;
@@ -212,6 +212,25 @@ button.submit:active {
    background: url('../img/layout/9662.png') no-repeat right #fff;
    background-size: 25px 25px;
 }
+
+.select2{
+  
+   background: transparent;
+   width: 220px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   border: 1px solid #ccc;
+   background: url('../img/layout/9662.png') no-repeat right #fff;
+   background-size: 25px 25px;
+   
+}
+
+
 
 .row {
     margin-left :160px;

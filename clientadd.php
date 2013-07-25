@@ -189,7 +189,7 @@ if ( !(empty($_POST)))
  		<ul>
             <li><a href="index.php"><i class="icon-home"></i>Home</a></li>
             <li><a href="clients.php"><i class="icon-user-3"></i>Clients</a></li>
-            <li><a href="clients.php"><i class="icon-stats-up"></i>Companies</a></li>
+            <li><a href="companies.php"><i class="icon-stats-up"></i>Companies</a></li>
             
         </ul>
  	</section>

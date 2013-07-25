@@ -43,7 +43,7 @@ if ( !(empty($_POST)))
     if(!$insertFlag)
       $error =  $db->error();
 
-    $response = $db->select('client',false,'id',"pan='$cpan'",null);
+    $response = $db->select('company',false,'id',"pan='$cpan'",null);
     if($response)
         $id = $db->getResult();
     else
