@@ -312,7 +312,7 @@ else
             if(!isset($lod[0]))
             {
                  $res = $db->select('client',false,'s_first',"id=".$lod['client-id'],null);
-                 if($response)
+                 if($res)
                     $cl = $db->getResult();
                 echo "<tr>";
                     echo "<td><a href=\"showclient.php?id=".$lod['client-id']."\">".$cl['s_first']."</td>";
@@ -327,7 +327,7 @@ else
                 {
 
                     $res = $db->select('client',false,'s_first',"id=".$lod[$i]['client-id'],null);
-                    if($response)
+                    if($res)
                         $cl = $db->getResult();
                     
                     echo "<tr>";
