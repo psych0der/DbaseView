@@ -166,7 +166,7 @@ if(!$flag)
     <h1>
     <center>
     <span class="label important" style="font-size:0.6em;margin-top:-15px;">Error : </span>
-    Client unavailable
+    Company unavailable
     </center>
     </h1>
     </div>
@@ -190,6 +190,14 @@ else
              
             ?>
             </span>
+            <?php
+                if($company['verified'] ==1)
+                {
+                    echo "<span class=\"label success\" style=\"float:right;font-size:1em;\" >Verified</span>";
+                }
+                else
+                    echo "<span class=\"label important\" style=\"float:right;font-size:1em;\" >Unverified</span>";
+             ?>
 		</header>
          
     </li>
@@ -273,6 +281,18 @@ else
         </div>
         
     </li>
+    <li>
+        <a href=<?php echo "\"companycredential.php?id=$id\"";?>><button class="bg-color-redLight fg-color-white" style="margin-left:-2px;">Credentials</button></a>
+        <a href=<?php echo "\"companyservices.php?id=$id\""?>><button class="bg-color-pink fg-color-white" style="margin-left:-1px;">Services</button></a>
+        <a href=<?php echo "\"companyithistory.php?id=$id\"";?>><button class="bg-color-magenta fg-color-white"style="margin-left:-1px;" >IT history</button></a>
+        <a href=<?php echo "\"companypayment.php?id=$id\""?>><button class="bg-color-yellow fg-color-white" style="margin-left:-1px;"style="margin-left:-1px;">Payments</button></a>
+        <a href=<?php echo "\"companytin.php?id=$id\"";?>><button class="bg-color-purple fg-color-white"style="margin-left:-1px;" >TIN details</button></a>
+        
+    </li>
+
+
+
+
     <?php
     }
     ?>
@@ -350,6 +370,7 @@ else
 
         </table>
     </li>
+
 
     <li id="add_button">
         <center><button class="submit bg-color-green fg-color-white"  id="create1">Add Director</button>

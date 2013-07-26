@@ -54,6 +54,7 @@ if ( !(empty($_POST)))
     $mobile = $_POST['mobile1'];
     $phone = $_POST['phone1'];
 
+
     
 
     if(isset($_POST['mname']) && ! empty($_POST['mname']))
@@ -127,8 +128,15 @@ if ( !(empty($_POST)))
     else
         $url = '';
 
+    if(isset($_POST['verified']) && $_POST['verified']==1)
+    {
+        $verified = 1;
+    }
+    else
+        $verified = 0;
 
-    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url);
+
+    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url,$verified);
     $insertFlag = false;
     $insertFlag = $db->insert('client',$values);
 
@@ -622,6 +630,13 @@ else
     	
     	<span class="form_hint">Proper format "http://someaddress.com"</span>
 	</li>
+    <li>
+        <label for="check">Verify:</label>
+        <input type="checkbox" name="verified" value="1" <?php  if($user['verified']==1) echo "checked"; ?>>
+
+
+    </li>
+
     <?php
         $response = $db->select('user_account',false,'*',"id=$id",null);
         if($response)

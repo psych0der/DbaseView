@@ -37,11 +37,19 @@ margin-bottom:2px;
 
 }
 
-#content header > span {
+#content header > span{
 color:#0867a8;
 font-size:3em;
 font-weight:100;
 margin-bottom :10px;
+
+}
+
+.head a {
+color:#0867a8;
+font-size:1.2em;
+font-weight:100;
+
 }
 
 header .sidebar-head {

@@ -51,10 +51,16 @@ if ( !(empty($_POST)))
     else
         $nature = '';
 
+    if(isset($_POST['verified']) && $_POST['verified']==1)
+    {
+        $verified = 1;
+    }
+    else
+        $verified = 0;
 
     
 
-   $values = array('',$name,$doi,$cin,$nature,$cpan,$tax);
+   $values = array('',$name,$doi,$cin,$nature,$cpan,$tax,$verified);
 
     $insertFlag = $db->insert('company',$values);
 
@@ -92,6 +98,7 @@ if ( !(empty($_POST)))
     <script type="text/javascript" src="js/datepicker.js"></script>
     <script type="text/javascript" src="js/typeahead.min.js"></script>
     <script type="text/javascript" src="js/jqueryui.js"></script>
+
     
 
     <script type="text/javascript">
@@ -244,6 +251,15 @@ else
     </li>
 
     <li>
+        <label for="name">PAN:</label>
+        <input type="text" id="cpan" name="cpan" placeholder="CIN" class="custom-input name" value = <?php echo '"'.$company['pan'].'"';?> required/>
+        
+       
+    </li>
+
+
+
+    <li>
         <label for="name">Tax Number:</label>
        
         <input type="text" id="tax" name="tax" placeholder="John" class="custom-input name" value = <?php echo '"'.$company['tax'].'"';?> required/>
@@ -281,6 +297,12 @@ else
         ?>
         
         
+    </li>
+    <li>
+        <label for="check">Verify:</label>
+        <input type="checkbox" name="verified" value="1" <?php  if($company['verified']==1) echo "checked"; ?>>
+
+
     </li>
 
     

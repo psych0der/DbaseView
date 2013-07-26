@@ -106,7 +106,7 @@ if ( !(empty($_POST)))
         $url = '';
 
 
-    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url);
+    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url,0);
 
     $insertFlag = $db->insert('client',$values);
 
@@ -169,6 +169,8 @@ if ( !(empty($_POST)))
     $('#state').autocomplete({
   source: ['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu & Kashmir','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Tripura','Uttarakhand','Uttar Pradesh','West Bengal','Andaman & Nicobar','Chandigarh','Dadra and Nagar Haveli','Daman & Diu','Delhi','Lakshadweep','Puducherry'],
 });
+
+    $('#companysel').prop('selectedIndex', -1);
     
     });
     </script>
@@ -270,9 +272,34 @@ if ( !(empty($_POST)))
     <li>
         <label for="comapny">Company:</label>
        Exisitng company : 
-       <select name="company1" class="select company">
-            <!-- filled through php -->
-        </select>
+       
+       <?php
+        $clres = $db->select('company',false,'id,name',null,null,null);
+        if(!$clres)
+            echo $db->error();
+        else
+            $company = $db->getResult();
+
+        $select = "<select id=\"companysel\" name =\"company1\" class=\"custom-input select2\">";
+        
+        if(isset($company[0]))
+        {
+            for($i=0;$i<count($company);$i++)
+            {
+                $select.= "<option value =\"".$company[$i]['id']."\">".$company[$i]['name']."</option>";
+            }
+            $select.="</select>";
+        }
+        else
+        {
+
+            $select.= "<option value =\"".$company['id']."\">".$company['name']."</option>";
+            $select.="</select>";
+
+        }
+        echo $select;
+        ?>
+
     </br>
 </br>
     OR

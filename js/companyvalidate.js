@@ -82,19 +82,19 @@ $("#name").keyup(function() {
 	});
 
 
-$('#submit1').click(function() {
+$('#submit').click(function() {
 		//event.preventDefault();
-		//alert(edited);
+		alert(edited);
 		
 		if(typeof edited ==='undefined')
 		{
 		// no action					
 		}
 		else {
-			
+			alert(id);
 			
 			$.ajax({ 
-             url : "delete.php?id="+id,
+             url : "deleteCompany.php?id="+id,
              async : false,
          	});
 

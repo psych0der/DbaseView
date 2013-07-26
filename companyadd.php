@@ -36,7 +36,7 @@ if ( !(empty($_POST)))
     
 
 
-    $values = array('',$name,$doi,$cin,$nature,$cpan,$tax);
+    $values = array('',$name,$doi,$cin,$nature,$cpan,$tax,0);
 
     $insertFlag = $db->insert('company',$values);
 
@@ -194,7 +194,7 @@ if ( !(empty($_POST)))
     
 	
 	<li>
-    	<button class="submit bg-color-green fg-color-white" type="submit" id="submit1">Submit Form</button>
+    	<button class="submit bg-color-green fg-color-white" type="submit" id="submit">Submit Form</button>
     	<button class="submit bg-color-blue fg-color-white" type="reset">Reset Fields</button>
 	</li>
 

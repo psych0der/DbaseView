@@ -144,6 +144,14 @@ else
 
             ?>
             </span>
+            <?php
+                if($user['verified'] ==1)
+                {
+                    echo "<span class=\"label success\" style=\"float:right;font-size:1em;\" >Verified</span>";
+                }
+                else
+                    echo "<span class=\"label important\" style=\"float:right;font-size:1em;\" >Unverified</span>";
+             ?>
 		</header>
          
     </li>
@@ -245,7 +253,20 @@ else
 
              echo "Company :";
              echo "<span id=\"info\">";
-             echo $user['company'];
+             
+             if(is_numeric($user['company']))
+             {
+
+                $res = $db->select('company',false,'name',"id=".$user['company'],null);
+                 if($res) 
+                 {
+                    $com = $db->getResult();
+                    echo "<a href=\"showcompany.php?id=".$user['company']."\">".$com['name']."</a>";
+                }
+             }
+             
+             else
+                echo $user['company'];
         ?>
         
         </span>
