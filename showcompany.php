@@ -61,14 +61,25 @@ if(isset($_GET['id']) and !empty($_GET['id']))
         $client = $db->getResult();
 
     $select = "<select id=\"director\" name =\"director\" class=\"custom-input select2\">";
-    for($i=0;$i<count($client);$i++)
+    if(isset($client[0]))
     {
-        $select.= "<option value =\"".$client[$i]['id']."\">".$client[$i]['s_first']."</option>";
+        for($i=0;$i<count($client);$i++)
+        {
+            $select.= "<option value =\"".$client[$i]['id']."\">".$client[$i]['s_first']."</option>";
+        }
+    }
+    else
+    {
+         
+    
+            $select.= "<option value =\"".$client['id']."\">".$client['s_first']."</option>";
+        
     }
     $select.="</select>";
     
-    echo "var miniform = $('<div id=\"custom-input\" class=\"form\"><form id=\"form2\" class=\"sadd\"><ul id=\"custom-ul\"><li>".$select."<input type=\"text\" id=\"doi\" name=\"doi\" placeholder=\"\" class=\"custom-input name \" value = \"1992-07-03\" required/><input type=\"text\" id= \"doc\" name=\"doc\" placeholder=\"\" class=\"custom-input name  \" value = \"1992-07-03\" required /><button class=\"submit bg-color-blue fg-color-white\" id=\"ajax-insert\" >add</button></li></ul></form></div>')";
+    echo "var miniform = $('<div id=\"custom-input\" class=\"form\"><form id=\"form2\" class=\"sadd\"><ul id=\"custom-ul\"><li>".$select."<input type=\"text\" id=\"doi\" name=\"doi\" placeholder=\"\" class=\"custom-input name \" value = \"1992-07-03\" required/><input type=\"text\" id= \"doc\" name=\"doc\" placeholder=\"\" class=\"custom-input name  \" value = \"1992-07-03\" required /><button class=\"submit bg-color-blue fg-color-white\" id=\"ajax-insert\" >add</button></li></ul></form></div>');";
     ?>
+    
     var element =  document.getElementById('custom-input');
     if (element == null)
     {
