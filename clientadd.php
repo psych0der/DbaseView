@@ -292,7 +292,7 @@ if ( !(empty($_POST)))
         }
         else
         {
-
+            if(isset($company['id']))
             $select.= "<option value =\"".$company['id']."\">".$company['name']."</option>";
             $select.="</select>";
 
