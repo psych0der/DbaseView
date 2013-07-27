@@ -125,7 +125,7 @@ if(!isset($result[0]))
      $company = $result['company'];
     if(is_numeric($result['company']))
     {
-        $res2 = $db->select('company',false,'name',"id=".$resul['company'],null,null);
+        $res2 = $db->select('company',false,'name',"id=".$result['company'],null,null);
         $company_name = $db->getResult();
         $company = $company_name['name'];
 
