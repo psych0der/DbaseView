@@ -12,6 +12,10 @@ include './resources/config.php';
 include './resources/library/database.php';
 include './resources/library/paginator.php';
 
+$filter = false;
+if(isset($_GET['filter']) && $_GET['filter']=='verified')
+    $filter = true;
+
 $db = new Database($config['db']['db1']['host'],$config['db']['db1']['username'],$config['db']['db1']['password'],$config['db']['db1']['dbname']);
 
 $pages = new Paginator();  
@@ -20,7 +24,12 @@ $pages->setItemsTotal($db->getResult());
 $pages->setMidRange(9);  
 $pages->paginate();  
 
-$response = $db->select('company',false,'id,name,cin,nature',null,null,$pages->getLimit());
+if(!$filter)
+    $response = $db->select('company',false,'id,name,cin,nature',null,null,$pages->getLimit());
+else
+    $response = $db->select('company',false,'id,name,cin,nature',"verified=1",null,$pages->getLimit());
+
+
 if(!$response)
     echo $db->error();
 else
@@ -90,6 +99,7 @@ else
 </header>
 
 <div id="table-wrapper">
+    <?php echo "<a href=\"companies.php?filter=verified&\">verified</a>";?>
 <table class="customt">
  <thead>
     <tr>
@@ -144,7 +154,8 @@ echo "</tr>";
 echo "Page ".$pages->getCurrentPage()." of ".$pages->getNumPage(); 
 echo "</br></br>";
 
-echo $pages->display_pages();
+
+echo "< ".$pages->display_pages()." >";
 
 
 

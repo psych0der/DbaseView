@@ -25,19 +25,28 @@ if(isset($_POST['query']) and !empty($_POST['query']))
 
 if($flag)
 {
-    $pages = new Paginator();  
+    
     $search_query = "( s_first LIKE '%".$query."%') OR ( s_middle LIKE '%".$query."%') OR ( s_last LIKE '%".$query."%') OR ( pan LIKE '%".$query."%') OR (din LIKE '%".$query."%') OR ( city LIKE '%".$query."%') OR ( state LIKE '%".$query."%')";
+    $search_query1 = "(name LIKE '%".$query."%') OR (pan LIKE '%".$query."%') OR (tax LIKE '%".$query."%') OR (nature LIKE '%".$query."%')";
+
     $db->select('client',true,'*',$search_query);
     $count = $db->getResult();
-    $pages->setItemsTotal($count);  
-    $pages->setMidRange(9);  
-    $pages->paginate();  
-
-    $response = $db->select('client',false,'id,s_first,s_last,city,state,company',$search_query,null,$pages->getLimit());
+    
+    $db->select('company',true,'*',$search_query1);
+    $count1 = $db->getResult();
+    
+    $response = $db->select('client',false,'id,s_first,s_last,city,state,company',$search_query,null,null);
     if(!$response)
         echo $db->error();
     else
         $result = $db->getResult();
+
+    $response1 = $db->select('company',false,'id,name,cin,nature',$search_query1,null,null);
+    if(!$response1)
+        echo $db->error();
+    else
+        $result2 = $db->getResult();
+
 }
 
 ?>
@@ -80,7 +89,7 @@ if($flag)
  		<ul>
             <li><a href="index.php"><i class="icon-home"></i>Home</a></li>
             <li><a href="clients.php"><i class="icon-user-3"></i>Clients</a></li>
-            <li><a href="clients.php"><i class="icon-stats-up"></i>Companies</a></li>
+            <li><a href="comapanies.php"><i class="icon-stats-up"></i>Companies</a></li>
             
         </ul>
  	</section>
@@ -108,13 +117,15 @@ if($flag)
 
     if($count==0)
     {
-        echo "</br></br></br></br><center><h3><span class=\"label info\">Info</span> No results found matching $query</h3></center>";
+        echo "</br><center><h3><span class=\"label info\">Info</span> No clients found matching $query</h3></center>";
     }
 else
 {
 ?>
 <div id="table-wrapper">
+<h3>Client Results</h3>
 <table class="customt">
+
  <thead>
     <tr>
        
@@ -136,9 +147,18 @@ if(!empty($result))
 {
 if(!isset($result[0]))
 {
+    $company = $result['company'];
+    if(is_numeric($result['company']))
+    {
+        $res2 = $db->select('company',false,'name',"id=".$result['company'],null,null);
+        $company_name = $db->getResult();
+        $company = $company_name['name'];
+
+    }
+
 echo "<tr>";
 echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['s_first']." ".$result['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['company']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$company."</a></td>";
 echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['city'].",".$result['state']."</a></td>";
 echo "</tr>";
 
@@ -147,9 +167,17 @@ else
 {
 for($i = 0 ; $i < count($result) ; $i++)
 {
+     $company = $result['company'];
+    if(is_numeric($result[$i]['company']))
+    {
+        $res2 = $db->select('company',false,'name',"id=".$result[$i]['company'],null,null);
+        $company_name = $db->getResult();
+        $company = $company_name['name'];
+
+    }
 echo "<tr>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['s_first']." ".$result[$i]['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['company']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$company."</a></td>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['city'].",".$result[$i]['state']."</a></td>";
 echo "</tr>";
 
@@ -157,28 +185,96 @@ echo "</tr>";
 }
 }
 
+
+
+
+
 }
 ?>
     
 </tbody>
 </table>
 </div>
-<div id="pagination">
 <?php
-echo "Page ".$pages->getCurrentPage()." of ".$pages->getNumPage(); 
-echo "</br></br>";
-
-echo $pages->display_pages();
-
-
-
+}
+}
 ?>
 
+<?php
+if($flag)
+{
+
+    if($count1==0)
+    {
+        echo "</br><center><h3><span class=\"label info\">Info</span> No Comapanies found matching $query</h3></center>";
+    }
+else
+{
+?>
+<div id="table-wrapper">
+<h3>Company Results</h3>
+<table class="customt">
+
+ <thead>
+    <tr>
+       
+        <th scope="col">Name</th>
+        <th scope="col">CIN</th>
+        <th scope="col">Nature</th>
+    </tr>
+</thead>
+<tbody>
+    <!--<tr>
+        
+        <td>Cell b1</td>
+        <td>Cell c1</td>
+        <td>Cell d1</td>
+    </tr> -->
+<?php 
+
+if(!empty($result1))
+{
+if(!isset($result1[0]))
+{
+echo "<tr>";
+echo "<td><a href=\"showcompany.php?id=".$result1['id']."\">".$result1['name']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result1['id']."\">".$result1['cin']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result1['id']."\">".$result1['nature'].",".$result['state']."</a></td>";
+echo "</tr>";
+
+}
+else
+{
+for($i = 0 ; $i < count($result1) ; $i++)
+{
+echo "<tr>";
+echo "<td><a href=\"showcompany.php?id=".$result1[$i]['id']."\">".$result1[$i]['name']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result1[$i]['id']."\">".$result1[$i]['cin']."</a></td>";
+echo "<td><a href=\"showcompany.php?id=".$result1[$i]['id']."\">".$result1[$i]['nature'].",".$result[$i]['state']."</a></td>";
+echo "</tr>";
+
+
+}
+}
+
+
+
+
+
+}
+?>
+    
+</tbody>
+</table>
 </div>
+
 <?php
 }
 }
 ?>
+
+
+
        
 </section>
 	

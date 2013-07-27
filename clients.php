@@ -12,6 +12,10 @@ include './resources/config.php';
 include './resources/library/database.php';
 include './resources/library/paginator.php';
 
+$filter = false;
+if(isset($_GET['filter']) && $_GET['filter']=='verified')
+    $filter = true;
+
 $db = new Database($config['db']['db1']['host'],$config['db']['db1']['username'],$config['db']['db1']['password'],$config['db']['db1']['dbname']);
 
 $pages = new Paginator();  
@@ -20,7 +24,12 @@ $pages->setItemsTotal($db->getResult());
 $pages->setMidRange(9);  
 $pages->paginate();  
 
-$response = $db->select('client',false,'id,s_first,s_last,city,state,company',null,null,$pages->getLimit());
+if(!$filter)
+    $response = $db->select('client',false,'id,s_first,s_last,city,state,company',null,null,$pages->getLimit());
+else
+    $response = $db->select('client',false,'id,s_first,s_last,city,state,company',"verified=1",null,$pages->getLimit());
+
+
 if(!$response)
     echo $db->error();
 else
@@ -90,6 +99,7 @@ else
 </header>
 
 <div id="table-wrapper">
+ <?php echo "<a href=\"clients.php?filter=verified&\">verified</a>";?>
 <table class="customt">
  <thead>
     <tr>
@@ -112,9 +122,17 @@ if(!empty($result))
 {
 if(!isset($result[0]))
 {
+     $company = $result['company'];
+    if(is_numeric($result['company']))
+    {
+        $res2 = $db->select('company',false,'name',"id=".$resul['company'],null,null);
+        $company_name = $db->getResult();
+        $company = $company_name['name'];
+
+    }
 echo "<tr>";
 echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['s_first']." ".$result['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['company']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$company."</a></td>";
 echo "<td><a href=\"showclient.php?id=".$result['id']."\">".$result['city'].",".$result['state']."</a></td>";
 echo "</tr>";
 
@@ -123,9 +141,17 @@ else
 {
 for($i = 0 ; $i < count($result) ; $i++)
 {
+     $company = $result[$i]['company'];
+    if(is_numeric($result[$i]['company']))
+    {
+        $res2 = $db->select('company',false,'name',"id=".$result[$i]['company'],null,null);
+        $company_name = $db->getResult();
+        $company = $company_name['name'];
+
+    }
 echo "<tr>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['s_first']." ".$result[$i]['s_last']."</a></td>";
-echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['company']."</a></td>";
+echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$company."</a></td>";
 echo "<td><a href=\"showclient.php?id=".$result[$i]['id']."\">".$result[$i]['city'].",".$result[$i]['state']."</a></td>";
 echo "</tr>";
 
@@ -144,7 +170,11 @@ echo "</tr>";
 echo "Page ".$pages->getCurrentPage()." of ".$pages->getNumPage(); 
 echo "</br></br>";
 
-echo $pages->display_pages();
+echo "< ".$pages->display_pages()." >";
+
+
+
+
 
 
 
