@@ -53,9 +53,13 @@ if(isset($_GET['id']) and !empty($_GET['id']))
      
     $('#create1').click(function(){
     var miniform = $('<div id="custom-input" class="form"><form id="form2" class="sadd"><ul id="custom-ul"><li><input type="text" id="service" name="service" placeholder="gmail.com" class="custom-input name " required/><input type="text" id= "usname" name="usname" placeholder="username" class="custom-input name " required/><input type="text" id= "pswd" name="pswd" placeholder="password" class="custom-input name " required/><button class="submit bg-color-blue fg-color-white" id="ajax-insert" >add</button></li></ul></form></div>');
-    miniform.insertAfter($('#add_button'));
+    var element =  document.getElementById('custom-input');
+    
+    if (element == null)
+    {
+     miniform.insertAfter($('#add_button'));
     $('#ajax-insert').click(clickEvent);
-
+    }
     });
 
 
@@ -95,7 +99,7 @@ if(isset($_GET['id']) and !empty($_GET['id']))
  		<ul>
             <li><a href="index.php"><i class="icon-home"></i>Home</a></li>
             <li><a href="clients.php"><i class="icon-user-3"></i>Clients</a></li>
-            <li><a href="clients.php"><i class="icon-stats-up"></i>Companies</a></li>
+            <li><a href="companies.php"><i class="icon-stats-up"></i>Companies</a></li>
             
         </ul>
  	</section>
@@ -144,6 +148,14 @@ else
 
             ?>
             </span>
+            <?php
+                if($user['verified'] ==1)
+                {
+                    echo "<span class=\"label success\" style=\"float:right;font-size:1em;\" >Verified</span>";
+                }
+                else
+                    echo "<span class=\"label important\" style=\"float:right;font-size:1em;\" >Unverified</span>";
+             ?>
 		</header>
          
     </li>
@@ -245,7 +257,20 @@ else
 
              echo "Company :";
              echo "<span id=\"info\">";
-             echo $user['company'];
+             
+             if(is_numeric($user['company']))
+             {
+
+                $res = $db->select('company',false,'name',"id=".$user['company'],null);
+                 if($res) 
+                 {
+                    $com = $db->getResult();
+                    echo "<a href=\"showcompany.php?id=".$user['company']."\">".$com['name']."</a>";
+                }
+             }
+             
+             else
+                echo $user['company'];
         ?>
         
         </span>
@@ -267,7 +292,10 @@ else
         </div>
         
     </li>
-
+    <?php 
+        if($user['din']!= "")
+        {
+    ?>
     <li>
         <div id="info-block">
         <?php 
@@ -281,6 +309,9 @@ else
         </div>
         
     </li>
+    <?php
+    }
+    ?>
 
     
     <li>

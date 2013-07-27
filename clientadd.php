@@ -106,7 +106,7 @@ if ( !(empty($_POST)))
         $url = '';
 
 
-    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url);
+    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url,0);
 
     $insertFlag = $db->insert('client',$values);
 
@@ -169,6 +169,8 @@ if ( !(empty($_POST)))
     $('#state').autocomplete({
   source: ['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu & Kashmir','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Tripura','Uttarakhand','Uttar Pradesh','West Bengal','Andaman & Nicobar','Chandigarh','Dadra and Nagar Haveli','Daman & Diu','Delhi','Lakshadweep','Puducherry'],
 });
+
+    $('#companysel').prop('selectedIndex', -1);
     
     });
     </script>
@@ -189,7 +191,7 @@ if ( !(empty($_POST)))
  		<ul>
             <li><a href="index.php"><i class="icon-home"></i>Home</a></li>
             <li><a href="clients.php"><i class="icon-user-3"></i>Clients</a></li>
-            <li><a href="clients.php"><i class="icon-stats-up"></i>Companies</a></li>
+            <li><a href="companies.php"><i class="icon-stats-up"></i>Companies</a></li>
             
         </ul>
  	</section>
@@ -249,14 +251,14 @@ if ( !(empty($_POST)))
     <li>
         <label for="name">Father's Name:</label>
        
-        <input type="text" id="ffname" name="ffname" placeholder="John" class="custom-input name" required/>
+        <input type="text" id="ffname" name="ffname" placeholder="John" class="custom-input name"/>
         <input type="text" id="fmname" name="fmname" placeholder="Michell" class="custom-input name"/>
         <input type="text" id="flname" name="flname" placeholder="doe" class="custom-input name"/>
     </li>
 
     <li>
         <label for="name">Mother's Name:</label>
-        <input type="text" id="mfname" name="mfname" placeholder="Mary" class="custom-input name" required/>
+        <input type="text" id="mfname" name="mfname" placeholder="Mary" class="custom-input name"/>
         <input type="text" id="mmname" name="mmname" placeholder="Michell" class="custom-input name"/>
         <input type="text" id="mlname" name="mlname" placeholder="doe" class="custom-input name"/>
     </li>
@@ -270,9 +272,34 @@ if ( !(empty($_POST)))
     <li>
         <label for="comapny">Company:</label>
        Exisitng company : 
-       <select name="company1" class="select company">
-            <!-- filled through php -->
-        </select>
+       
+       <?php
+        $clres = $db->select('company',false,'id,name',null,null,null);
+        if(!$clres)
+            echo $db->error();
+        else
+            $company = $db->getResult();
+
+        $select = "<select id=\"companysel\" name =\"company1\" class=\"custom-input select2\">";
+        
+        if(isset($company[0]))
+        {
+            for($i=0;$i<count($company);$i++)
+            {
+                $select.= "<option value =\"".$company[$i]['id']."\">".$company[$i]['name']."</option>";
+            }
+            $select.="</select>";
+        }
+        else
+        {
+
+            $select.= "<option value =\"".$company['id']."\">".$company['name']."</option>";
+            $select.="</select>";
+
+        }
+        echo $select;
+        ?>
+
     </br>
 </br>
     OR
@@ -290,7 +317,7 @@ if ( !(empty($_POST)))
 
     <li>
         <label for="din">DIN:</label>
-        <input type="text" id = "din" name="din" placeholder="din " class="custom-input name"  required/>
+        <input type="text" id = "din" name="din" placeholder="din " class="custom-input name" />
         
     </li>
     
@@ -322,7 +349,7 @@ if ( !(empty($_POST)))
 
     <li>
         <label for="phone1">Phone #:</label>
-        <input type="text" id="phone1" name="phone1" placeholder="0120-2647166" class="custom-input name"  required/>
+        <input type="text" id="phone1" name="phone1" placeholder="0120-2647166" class="custom-input name" />
         <span class="form_hint">Proper format "0120-2647166"</span>
     </li>
 

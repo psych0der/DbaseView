@@ -37,11 +37,19 @@ margin-bottom:2px;
 
 }
 
-#content header > span {
+#content header > span{
 color:#0867a8;
 font-size:3em;
 font-weight:100;
 margin-bottom :10px;
+
+}
+
+.head a {
+color:#0867a8;
+font-size:1.2em;
+font-weight:100;
+
 }
 
 header .sidebar-head {
@@ -197,7 +205,7 @@ button.submit:active {
     width : 100px;
 }
 
- select{
+ .select{
   
    background: transparent;
    width: 60px;
@@ -212,6 +220,25 @@ button.submit:active {
    background: url('../img/layout/9662.png') no-repeat right #fff;
    background-size: 25px 25px;
 }
+
+.select2{
+  
+   background: transparent;
+   width: 220px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   border: 1px solid #ccc;
+   background: url('../img/layout/9662.png') no-repeat right #fff;
+   background-size: 25px 25px;
+   
+}
+
+
 
 .row {
     margin-left :160px;

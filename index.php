@@ -38,7 +38,7 @@
     <span class="buttons">	
 	<a href="clients.php"><button class="bg-color-blue white-text">Clients</button></a>
 	&nbsp;
-	<a href="companyadd.php"><button class="bg-color-blue white-text">Companies</button></a>
+	<a href="companies.php"><button class="bg-color-blue white-text">Companies</button></a>
 	</span>
 
 
