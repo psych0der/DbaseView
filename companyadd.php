@@ -73,7 +73,7 @@ if ( !(empty($_POST)))
 
     <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/datepicker.js"></script>
-    <script type="text/javascript" src="js/companyvalidate.js"></script>
+    
     <script type="text/javascript" src="js/jqueryui.js"></script>
 
     <script type="text/javascript">
@@ -100,6 +100,7 @@ if ( !(empty($_POST)))
     
     });
     </script>
+    <script type="text/javascript" src="js/companyvalidate.js"></script>
 
 </head>
 <body>

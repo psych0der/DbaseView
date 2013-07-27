@@ -53,9 +53,13 @@ if(isset($_GET['id']) and !empty($_GET['id']))
      
     $('#create1').click(function(){
     var miniform = $('<div id="custom-input" class="form"><form id="form2" class="sadd"><ul id="custom-ul"><li><input type="text" id="service" name="service" placeholder="gmail.com" class="custom-input name " required/><input type="text" id= "usname" name="usname" placeholder="username" class="custom-input name " required/><input type="text" id= "pswd" name="pswd" placeholder="password" class="custom-input name " required/><button class="submit bg-color-blue fg-color-white" id="ajax-insert" >add</button></li></ul></form></div>');
-    miniform.insertAfter($('#add_button'));
+    var element =  document.getElementById('custom-input');
+    
+    if (element == null)
+    {
+     miniform.insertAfter($('#add_button'));
     $('#ajax-insert').click(clickEvent);
-
+    }
     });
 
 

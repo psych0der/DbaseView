@@ -69,9 +69,12 @@ if(isset($_GET['id']) and !empty($_GET['id']))
     
     echo "var miniform = $('<div id=\"custom-input\" class=\"form\"><form id=\"form2\" class=\"sadd\"><ul id=\"custom-ul\"><li>".$select."<input type=\"text\" id=\"doi\" name=\"doi\" placeholder=\"\" class=\"custom-input name \" value = \"1992-07-03\" required/><input type=\"text\" id= \"doc\" name=\"doc\" placeholder=\"\" class=\"custom-input name  \" value = \"1992-07-03\" required /><button class=\"submit bg-color-blue fg-color-white\" id=\"ajax-insert\" >add</button></li></ul></form></div>')";
     ?>
-
+    var element =  document.getElementById('custom-input');
+    if (element == null)
+    {
     miniform.insertAfter($('#add_button'));
     $('#director').prop('selectedIndex', -1);
+    }
     
     $('#doi').DatePicker({
         format:'Y-m-d',

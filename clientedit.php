@@ -136,9 +136,10 @@ if ( !(empty($_POST)))
         $verified = 0;
 
 
-    $values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url,$verified);
+    //$values = array('',$title,$fname,$mname,$lname,$house,$colony,$city,$state,$pincode,$ffname,$fmname,$flname,$mfname,$mmname,$mlname,$dob,$company,$pan,$din,$email,$email2,$mobile,$mobile2,$phone,$phone2,$url,$verified);
     $insertFlag = false;
-    $insertFlag = $db->insert('client',$values);
+   // $insertFlag = $db->insert('client',$values);
+    $insertFlag = $db->update('client',array('s_title'=>$title,'s_first'=>$fname ,'s_middle'=>$mname ,'s_last'=>$lname , 'house'=>$house, 'colony'=>$colony , 'city'=>$city , 'state'=>$state , 'pin'=>$pincode , 'f_first'=>$ffname,'f_middle'=>$fmname,'f_last'=>$flname,'m_first'=>$mfname,'m_last'=>$mlname,'m_middle'=>$mmname,'dob'=>$dob,'company'=>$company,'pan'=>$pan,'din'=>$din,'email1'=>$email,'email2'=>$email2,'mobile1'=>$mobile,'mobile2'=>$mobile2,'phone1'=>$phone,'phone2'=>$phone,'url'=>$url,'verified'=>$verified),array('id',$id));
 
     if(!$insertFlag)
       $error =  $db->error();
@@ -491,15 +492,52 @@ else
     <li>
         <label for="comapny">Company:</label>
        Exisitng company : 
-       <select name="company1" class="select company">
-            <!-- filled through php -->
-        </select>
+       <?php
+        $clres = $db->select('company',false,'id,name',null,null,null);
+        if(!$clres)
+            echo $db->error();
+        else
+            $company = $db->getResult();
+
+        $select = "<select id=\"companysel\" name =\"company1\" class=\"custom-input select2\"><option value=\"\"></option>";
+        $selected = "";
+        $token = false;
+        
+        if(isset($company[0]))
+        {
+            for($i=0;$i<count($company);$i++)
+            {
+                if($company[$i]['id']==$user['company'])
+                {
+                    $selected="selected";
+                    $token = true;
+                }
+                $select.= "<option value =\"".$company[$i]['id']."\" $selected>".$company[$i]['name']."</option>";
+            }
+            $select.="</select>";
+
+            if($token == false)
+            {
+               echo "<script>$('#companysel').prop('selectedIndex', -1);</script>";
+            }
+        }
+        else
+        {
+            if($company['id']==$user['company'])
+                    $selected="selected";
+            $select.= "<option value =\"".$company['id']."\"$selected>".$company['name']."</option>";
+            $select.="</select>";
+
+        }
+        echo $select;
+        ?>
+
     </br>
 </br>
     OR
 </br>
         <?php 
-        if(isset($user['company']))
+        if(isset($user['company']) && !is_numeric($user['company']))
         {
         ?>
        <input type="text" id= "company" name="company2" placeholder="company not listed"  class="custom-input name row" width="350px" value = <?php echo '"'.$user['company'].'"';?>/>

@@ -84,8 +84,9 @@ $("#name").keyup(function() {
 
 $('#submit').click(function() {
 		//event.preventDefault();
-		alert(edited);
-		
+		//alert(edited);
+		//alert("message");
+		/*
 		if(typeof edited ==='undefined')
 		{
 		// no action					
@@ -99,6 +100,7 @@ $('#submit').click(function() {
          	});
 
 		}
+		*/
 		var error = '';
 
 		error += validateText(document.getElementById('name'));

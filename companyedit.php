@@ -60,9 +60,10 @@ if ( !(empty($_POST)))
 
     
 
-   $values = array('',$name,$doi,$cin,$nature,$cpan,$tax,$verified);
+   //values = array('',$name,$doi,$cin,$nature,$cpan,$tax,$verified);
 
-    $insertFlag = $db->insert('company',$values);
+   // $insertFlag = $db->insert('company',$values);
+    $insertFlag = $db->update('company',array('name'=>$name,'doi'=>$doi ,'cin'=>$cin , 'nature'=>$nature , 'pan'=>$cpan, 'tax'=>$tax , 'verified'=>$verified),array('id',$id));
 
     if(!$insertFlag)
       $error =  $db->error();

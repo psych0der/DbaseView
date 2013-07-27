@@ -349,7 +349,7 @@ if ( !(empty($_POST)))
 
     <li>
         <label for="phone1">Phone #:</label>
-        <input type="text" id="phone1" name="phone1" placeholder="0120-2647166" class="custom-input name"  required/>
+        <input type="text" id="phone1" name="phone1" placeholder="0120-2647166" class="custom-input name" />
         <span class="form_hint">Proper format "0120-2647166"</span>
     </li>
 

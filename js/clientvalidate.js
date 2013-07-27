@@ -272,7 +272,7 @@ jQuery(document).ready(function($) {
 	$('#submit').click(function() {
 		//event.preventDefault();
 		//alert(edited);
-		
+		/*
 		if(typeof edited ==='undefined')
 		{
 		// no action					
@@ -286,6 +286,7 @@ jQuery(document).ready(function($) {
          	});
 
 		}
+		*/
 		var error = '';
 
 		error += validateText(document.getElementById('fname'));
@@ -359,8 +360,11 @@ jQuery(document).ready(function($) {
 			error += validateMobile(mobile2);
 
 
+		var phone1 = document.getElementById('phone1');
+		if (phone1.value != "")
+			error += notEmpty(phone2);
 
-		error += notEmpty(document.getElementById('phone1'));
+		//error += notEmpty(document.getElementById('phone1'));
 
 		var phone2 = document.getElementById('phone2');
 		if (phone2.value != "")
