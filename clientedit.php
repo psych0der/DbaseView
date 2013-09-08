@@ -711,8 +711,8 @@ else
             {
             for($i = 0 ; $i < count($credential) ; $i++)
                 {
-                    echo "<tr id=\"".$credential['username'].$credential['password']."\">";
-                    echo "<td><i class=\"icon-cancel\" onclick =\"deleteCredential('".$credential['username']."','".$credential['password']."');\"></i></td>";
+                    echo "<tr id=\"".$credential[$i]['username'].$credential[$i]['password']."\">";
+                    echo "<td><i class=\"icon-cancel\" onclick =\"deleteCredential('".$credential[$i]['username']."','".$credential[$i]['password']."');\"></i></td>";
                     echo "<td>".$credential[$i]['account_type']."</td>";
                     echo "<td>".$credential[$i]['username']."</td>";
                     echo "<td>".$credential[$i]['password']."</td>";
